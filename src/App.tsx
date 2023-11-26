@@ -6,7 +6,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
-  const [backgroundColor, setBackgroundColor] = useState('#73ffa8d9');
+  const [backgroundColor, setBackgroundColor] = useState('#445b0bd9');
   const changeBackgroundColor = () => {
     // Generate a random color for demonstration purposes
     const newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
