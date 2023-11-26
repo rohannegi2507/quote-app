@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import QuoteContainer from './component/QuoteContainer';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
+  const [backgroundColor, setBackgroundColor] = useState('#73ffa8d9');
+  const changeBackgroundColor = () => {
+    // Generate a random color for demonstration purposes
+    const newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setBackgroundColor(newColor);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{backgroundColor}}>
+     <QuoteContainer changeBackgroundColor={changeBackgroundColor} backgroundColor={backgroundColor}/>
+     <div className="founder">by Rohan Negi <span><FontAwesomeIcon icon={faHeart} /></span></div>
     </div>
   );
 }
