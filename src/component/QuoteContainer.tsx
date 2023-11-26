@@ -7,19 +7,13 @@ type Props = {
     backgroundColor: string,
 }
 
-type QUOTE = {
-  text: string;
-  author: string;
-}
-
-const data = [{text:'asdasdas kndsjkdkjfdaskkjlasdflkjhfdsakhjsdfalhjkdfaslhkjdasflkhjdsfalkhjdasfhjkdsfahjkladsflhjk', author:'asdasdas'},{text:'1222', author:'asdasdas'}]
 export default function QuoteContainer({changeBackgroundColor, backgroundColor}: Props) {
-  const [quoteList, setQuoteList] =  useState(data)
+  const [quoteList, setQuoteList] =  useState([])
   const [currentQuoteIndex, setCurrentQuoteIndex] =  useState(-1)
-  const [currentQuote, setCurrentQuote] =  useState({text:'Nothing ksddsadasdasdsadasasdasdjbsdbkjasdkjasdkjjkdasjkdasjkhdsajkhsad',author:'test'})
+  const [currentQuote, setCurrentQuote] =  useState({text:'',author:''})
   
   const getQuote = async ()=>{
-   const data =  await fetch("https://type.fit/api/quotes")
+    await fetch("https://type.fit/api/quotes")
   .then(function(response) {
     return response.json();
   })
@@ -43,6 +37,7 @@ export default function QuoteContainer({changeBackgroundColor, backgroundColor}:
   },[quoteList])
 
   const copyContent = async () => {
+    if(!currentQuote ) return
     try {
       await navigator.clipboard.writeText(currentQuote.text);
       console.log('Content copied to clipboard');
